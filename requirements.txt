@@ -1,0 +1,13 @@
+mkdocs
+mkdocs-awesome-pages-plugin
+mkdocs-exclude
+mkdocs-exclude-search
+mkdocs-gen-files
+mkdocs-glightbox
+mkdocs-link-marker
+mkdocs-macros-plugin
+mkdocs-material
+mkdocs-material-extensions
+mkdocs-page-pdf
+mkdocs-swagger-ui-tag
+mkdocs-timetoread-plugin

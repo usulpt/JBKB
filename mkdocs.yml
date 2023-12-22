@@ -1,0 +1,103 @@
+site_name: JBKB
+site_url: http://192.168.1.76:19000/
+docs_dir: 'docs'                    # source markdown files
+theme:
+  name: material
+  language: en
+  features:
+    #- navigation.instant # some features may not work properly with XHR
+    - navigation.tracking # the URL changes with the active anchor
+    - navigation.tabs # first top-level sections are shown as tabs
+    #- navigation.tabs.sticky # tabs always show
+    - navigation.sections # sections are rendered as groups in the sidebar
+    #- navigation.expand # all sections are expanded
+    - navigation.indexes # link an index.md page to a section
+    - navigation.top # show back-to-top button
+    #- navigation.prune # limit index.html files to current menu snapshot
+    - search.suggest # display the likeliest completion for the last word
+    - search.highlight # highlight all occurrences
+    - search.share # show a share button
+    - content.code.copy
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  font:
+    text: Open Sans
+    code: Source Code Pro
+  custom_dir: 'overrides/'
+  #logo: assets/images/cmf-logo.png
+  #favicon: assets/images/favicon.ico
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/glightbox.min.css
+extra_javascript:
+  - assets/javascripts/extra.js
+  - assets/javascripts/mermaid.min.js
+  - assets/javascripts/tablesort.min.js
+  - assets/javascripts/tex-mml-chtml.js
+  - assets/javascripts/mathjax.js
+  - assets/javascripts/glightbox.min.js
+validation:
+  nav:
+    omitted_files: ignore
+    not_found: ignore
+    absolute_links: ignore
+  links:
+    not_found: ignore
+    absolute_links: ignore
+    unrecognized_links: ignore
+plugins:
+  - search:
+      pipeline:
+        #- stemmer
+        - stopWordFilter
+        - trimmer
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang: en
+  - awesome-pages: # https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin, needs constant tinkering and internal .pages for navigation that would need to be localized
+      collapse_single_pages: true
+  - macros:
+      verbose: true
+  - glightbox # https://github.com/blueswen/mkdocs-glightbox
+  #- link-marker # https://github.com/timmeinerzhagen/mkdocs-link-marker
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - toc:
+      permalink: "#"
+      permalink_title: Direct link to this section
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji 
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid # https://facelessuser.github.io/pymdown-extensions/extras/mermaid/
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  #- neoteroi.spantable
+  #- neoteroi.cards
